@@ -2,8 +2,8 @@ name: 'My Workflow'
 
 on:
   push:
-    brances:
-      -main
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -14,6 +14,6 @@ jobs:
       - uses: jsmrcaga/action-netlify-deploy@master
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.MY_TOKEN_SECRET }}
-          NETLIFY_SITE_ID: ${{ secrets.MY_SITE_ID}}
+          NETLIFY_SITE_ID: ${{ secrets.MY_SITE_ID }}
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: dist/axelcars/browser
