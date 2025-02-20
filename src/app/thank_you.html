@@ -38,30 +38,11 @@
             object-fit: cover;
         }
 
-        .button {
-            display: inline-block;
-            background-color: #ff6b6b;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .button:hover {
-            background-color: #ff4757;
-            transform: scale(1.1);
-        }
-
         .emoji {
             position: absolute;
             font-size: 2rem;
             opacity: 0;
-            animation: fly 3s ease-out forwards;
+            animation: fly 2s ease-out forwards; /* Shortened animation to 2s */
         }
 
         @keyframes fly {
@@ -84,26 +65,30 @@
     <h1>Gratulerer med dagen mamma! 🎂🎉🎈</h1>
 
     <div class="image-container">
-        <img src="https://www.google.com/imgres?q=susanna%20ahlander&imgurl=https%3A%2F%2Fholar.no%2Fwp-content%2Fuploads%2F2024%2F01%2FDSCF3516_SMALL.jpg&imgrefurl=https%3A%2F%2Fholar.no%2Fkontakt%2F&docid=X5Ig9Jz2avmIaM&tbnid=rCfdKuW-amP_0M&vet=12ahUKEwjh3Y2pj9KLAxVlYPEDHeq3AiAQM3oECHAQAA..i&w=1333&h=2000&hcb=2&ved=2ahUKEwjh3Y2pj9KLAxVlYPEDHeq3AiAQM3oECHAQAA" alt="Bursdagsbilde">
+        <img src="mamma.jpg" alt="Bursdagsbilde">
     </div>
-
-    <button class="button" onclick="startCelebration()">Feir!</button>
 
     <script>
         function startCelebration() {
             const emojis = ['🎉', '🎂', '🎈', '🎁', '💖', '🌹'];
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) { // Increased to 40 for more emojis
                 const emoji = document.createElement('div');
                 emoji.classList.add('emoji');
                 emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
                 emoji.style.left = `${Math.random() * 100}vw`;
                 emoji.style.bottom = '0';
-                emoji.style.animationDelay = `${Math.random() * 0.5}s`;
+                emoji.style.animationDelay = `${Math.random() * 0.3}s`; // Reduced delay for faster start
                 document.body.appendChild(emoji);
 
-                setTimeout(() => emoji.remove(), 3000);
+                setTimeout(() => emoji.remove(), 2000); // Shorter duration before removal
             }
         }
+
+        // Faster and continuous celebration
+        window.onload = () => {
+            startCelebration(); // Instant start
+            setInterval(startCelebration, 700); // Repeat faster every 0.7s
+        };
     </script>
 
 </body>
